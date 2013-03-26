@@ -86,13 +86,16 @@
         // or months/days that fall after the minimum age
         if (!settings.futureDates && selectedYear === startYear) {
           if (curMaxMonth > todayMonth) {
+
             while (curMaxMonth > todayMonth) {
               $month.children(":last").remove();
               curMaxMonth--;
             }
-            // reset the day selection
-            $day.children(":first").attr("selected", "selected");
+
+            // // reset the day selection
+            // $day.children(":first").attr("selected", "selected");
           }
+
           if (selectedMonth === todayMonth) {
               while (curMaxDay > todayDay) {
                   $day.children(":last").remove();
@@ -112,7 +115,11 @@
 
         // update the hidden date
         if ((selectedYear * selectedMonth * selectedDay) !== 0) {
-          hiddenDate = selectedYear + "-" + selectedMonth + "-" + selectedDay;
+          // Update the format of selected Month and selected Day
+          var formattedMonth = ('' + selectedMonth).length === 1 ? '0' + selectedMonth : selectedMonth;
+          var formattedDay = ('' + selectedDay).length === 1 ? '0' + selectedDay : selectedDay;
+
+          hiddenDate = selectedYear + "-" + formattedMonth + "-" + formattedDay;
           $(this).find('#'+settings.fieldId).val(hiddenDate);
           if (settings.onChange !== null) {
             settings.onChange(hiddenDate);
@@ -156,12 +163,13 @@
         $("<option value='0'>Day:</option>").appendTo($day);
       }
 
+      // Hidden date settings
       var hiddenDate;
       if (settings.defaultDate) {
         var defDate = new Date(settings.defaultDate + "T00:00:00"),
         defYear = defDate.getFullYear(),
-        defMonth = defDate.getMonth() + 1,
-        defDay = defDate.getDate();
+        defMonth = ('' + (defDate.getMonth() + 1)).length === 1 ? '0' + (defDate.getMonth() + 1) : (defDate.getMonth() + 1),
+        defDay = ('' + defDate.getDate()).length === 1 ? '0' + defDate.getDate() : defDate.getDate();
         hiddenDate = defYear + "-" + defMonth + "-" + defDay;
       }
 
@@ -194,6 +202,7 @@
         $month.val(date.getMonth() + 1);
         $day.val(date.getDate());
 
+        // console.log($day.val());
         // Update the option immediately after setting the default date
         updateSelectOptions();
       }
