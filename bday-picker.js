@@ -118,7 +118,13 @@
 
           hiddenDate = selectedYear + "-" + selectedMonth + "-" + selectedDay;
 
-          $(this).find('#'+settings.fieldId).val(hiddenDate);
+          // If auto generate hidden field, find and update in this div scope
+          if (settings.autoHiddenDate) {
+            $(this).find('#'+settings.fieldId).val(hiddenDate);
+          } else {
+            $('#' + settings.fieldId).val(hiddenDate);
+          }
+
           if (settings.onChange !== null) {
             settings.onChange(hiddenDate);
           }
