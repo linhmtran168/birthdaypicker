@@ -35,7 +35,8 @@
       "fieldId"       : "birthdate",
       "hiddenDate"    : true,
       "onChange"      : null,
-      "tabindex"      : null
+      "tabindex"      : null,
+      "inputClass"         : ''
     };
 
 
@@ -47,9 +48,9 @@
 
       // Create the html picker skeleton
       var $fieldset = $("<fieldset class='birthday-picker'></fieldset>"),
-          $year = $("<select class='birth-year' name='birth[year]'></select>"),
-          $month = $("<select class='birth-month' name='birth[month]'></select>"),
-          $day = $("<select class='birth-day' name='birth[day]'></select>");
+          $year = $("<select class='birth-year " + settings.inputClass + "' name='birth[year]'></select>"),
+          $month = $("<select class='birth-month " + settings.inputClass + "' name='birth[month]'></select>"),
+          $day = $("<select class='birth-day " + settings.inputClass + "' name='birth[day]'></select>");
 
       // Funtion to update the valude of select boxes
       var updateSelectOptions = function() {
