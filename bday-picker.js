@@ -34,6 +34,7 @@
       "fieldName"     : "birthdate",
       "fieldId"       : "birthdate",
       "hiddenDate"    : true,
+      "autoHiddenDate": true,
       "onChange"      : null,
       "tabindex"      : null,
       "inputClass"         : ''
@@ -155,9 +156,9 @@
 
       // Add the option placeholders if specified
       if (settings.placeholder) {
-        $("<option value='0'>Year:</option>").appendTo($year);
-        $("<option value='0'>Month:</option>").appendTo($month);
-        $("<option value='0'>Day:</option>").appendTo($day);
+        $("<option value='0'>Year</option>").appendTo($year);
+        $("<option value='0'>Month</option>").appendTo($month);
+        $("<option value='0'>Day</option>").appendTo($day);
       }
 
       // Hidden date settings
@@ -176,7 +177,7 @@
       }
 
       // Create the hidden date markup
-      if (settings.hiddenDate) {
+      if (settings.hiddenDate && settings.autoHiddenDate) {
         $("<input type='hidden' name='" + settings.fieldName + "'/>")
             .attr("id", settings.fieldId)
             .val(hiddenDate)
