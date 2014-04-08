@@ -1,6 +1,6 @@
 /*!
- * jQuery Birthday Picker: v1.4 - 10/16/2011
- * http://abecoffman.com/stuff/birthdaypicker
+ * jQuery Birthday Picker
+ * Forked from http://abecoffman.com/stuff/birthdaypicker
  *
  * Copyright (c) 2010 Abe Coffman
  * Dual licensed under the MIT and GPL licenses.
