@@ -53,13 +53,8 @@
 
       // Funtion to update the valude of select boxes
       var updateSelectOptions = function() {
-            // todays date values
-        var todayDate = new Date(),
-            todayYear = todayDate.getFullYear(),
-            todayMonth = todayDate.getMonth() + 1,
-            todayDay = todayDate.getDate(),
-            // currently selected values
-            selectedYear = parseInt($year.val(), 10),
+        // currently selected values
+        var selectedYear = parseInt($year.val(), 10),
             selectedMonth = parseInt($month.val(), 10),
             selectedDay = parseInt($day.val(), 10),
             // number of days in currently selected year/month
@@ -115,11 +110,12 @@
 
         // update the hidden date
         if ((selectedYear * selectedMonth * selectedDay) !== 0) {
-          // Update the format of selected Month and selected Day
-          var formattedMonth = ('' + selectedMonth).length === 1 ? '0' + selectedMonth : selectedMonth;
-          var formattedDay = ('' + selectedDay).length === 1 ? '0' + selectedDay : selectedDay;
+          // Update the format of selected month and selected day if < 10
+          if (selectedMonth < 10) selectedMonth = '0' + selectedMonth;
+          if (selectedDay < 10) selectedDay = '0' + selectedDay;
 
-          hiddenDate = selectedYear + "-" + formattedMonth + "-" + formattedDay;
+          hiddenDate = selectedYear + "-" + selectedMonth + "-" + selectedDay;
+
           $(this).find('#'+settings.fieldId).val(hiddenDate);
           if (settings.onChange !== null) {
             settings.onChange(hiddenDate);
@@ -168,8 +164,13 @@
       if (settings.defaultDate) {
         var defDate = new Date(settings.defaultDate + "T00:00:00"),
         defYear = defDate.getFullYear(),
-        defMonth = ('' + (defDate.getMonth() + 1)).length === 1 ? '0' + (defDate.getMonth() + 1) : (defDate.getMonth() + 1),
-        defDay = ('' + defDate.getDate()).length === 1 ? '0' + defDate.getDate() : defDate.getDate();
+        defMonth = defDate.getMonth() + 1,
+        defDay = defDate.getDate();
+
+        // Update the day and month format for < 10 day and months
+        if (defMonth < 10) defMonth = '0' + defMonth;
+        if (defDay < 10) defDay = '0' + defDay;
+
         hiddenDate = defYear + "-" + defMonth + "-" + defDay;
       }
 
