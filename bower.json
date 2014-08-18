@@ -1,0 +1,28 @@
+{
+  "name": "birthday-picker",
+  "version": "0.1.0",
+  "authors": [
+    "Linh Tran <linh.mtran168@live.com>"
+  ],
+  "description": "A simple birthday date picker",
+  "main": "bday-picker.js",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "datepicker",
+    "birthday"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/linhmtran168/birthdaypicker",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": ">=1.8.0"
+  }
+}
