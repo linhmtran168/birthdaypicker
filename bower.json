@@ -1,8 +1,8 @@
 {
   "name": "birthday-picker",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "authors": [
-    "Linh Tran <linh.mtran168@live.com>"
+    "Abrahm Coffman <abecoffman@gmail.com>"
   ],
   "description": "A simple birthday date picker",
   "main": "bday-picker.js",
